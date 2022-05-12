@@ -1,11 +1,5 @@
 # lambda function created
 
-# variable "pythonfunctionapparnPP" {
-    
-# }
-# variable "pythonfunctionapparnPR" {
-    
-# }
 variable "pythonfunctionapparn" {
     
 }
@@ -92,7 +86,6 @@ resource "aws_sfn_state_machine" "SFtransactionprocessor" {
 EOF
 }
 
-# output "step-function-TransactionProcessor" {value = "${aws_sfn_state_machine.TransactionProcessor.name}"}
 
 
 

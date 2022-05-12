@@ -1,14 +1,14 @@
 # AWSLambda.tfIONS
 data "archive_file" "pp" { # archive folder
   type        = "zip"
-  source_file = "${path.module}/processpurchase.py"
-  output_path = "${path.module}/processpurchase.zip"
+  source_file = "${path.module}/SFprocesspurchase.py"
+  output_path = "${path.module}/SFprocesspurchase.zip"
 }
 
 data "archive_file" "pr" { # archive folder
   type        = "zip"
-  source_file = "${path.module}/processrefund.py"
-  output_path = "${path.module}/processrefund.zip"
+  source_file = "${path.module}/SFprocessrefund.py"
+  output_path = "${path.module}/SFprocessrefund.zip"
 }
 
 # S3 Bucket
@@ -22,14 +22,14 @@ resource "aws_s3_bucket" "cqpocsbucket" {
 
 resource "aws_s3_bucket_object" "object1" {
     bucket = aws_s3_bucket.cqpocsbucket.id
-    key = "processpurchase.zip"
-    source = "${path.module}/processpurchase.zip"
+    key = "SFprocesspurchase.zip"
+    source = "${path.module}/SFprocesspurchase.zip"
 }
 
 resource "aws_s3_bucket_object" "object2" {
     bucket = aws_s3_bucket.cqpocsbucket.id
-    key = "processrefund.zip"
-    source = "${path.module}/processrefund.zip"
+    key = "SFprocessrefund.zip"
+    source = "${path.module}/SFprocessrefund.zip"
 }
 
 # IAM role for lambda
@@ -52,7 +52,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
 resource "aws_lambda_function" "SFprocesspurchase" {
   function_name = "SFprocesspurchase"
   s3_bucket = aws_s3_bucket.cqpocsbucket.id
-  s3_key = "processpurchase.zip"
+  s3_key = "SFprocesspurchase.zip"
 
   role    = aws_iam_role.lambda_role.arn
   handler = "SFprocesspurchase.handler"
@@ -62,7 +62,7 @@ resource "aws_lambda_function" "SFprocesspurchase" {
 resource "aws_lambda_function" "SFprocessrefund" {
   function_name = "SFprocessrefund"
   s3_bucket = aws_s3_bucket.cqpocsbucket.id
-  s3_key = "processrefund.zip"
+  s3_key = "SFprocessrefund.zip"
 
   role    = aws_iam_role.lambda_role.arn
   handler = "SFprocessrefund.handler"

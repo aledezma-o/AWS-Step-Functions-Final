@@ -1,17 +1,3 @@
-# 
-# terraform {
-#     required_version = ">= 0.12.24"
-#     backend "s3" {
-#         bucket = "cloudquickpocsbackendtf"
-#         key = "quickcloudpocsbackend.tfstate"
-#         region = "us-east-1"
-        
-#         access_key = "AKIARHTFFQDACXVZS3XT"
-#         secret_key = "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"
-#     }
-# }
-#
-
 provider "random" {} #
 
 provider "aws" {
