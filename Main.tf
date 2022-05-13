@@ -2,17 +2,15 @@ provider "random" {} #
 
 provider "aws" {
     region = "us-east-1"
-    
-    access_key = "AKIARHTFFQDAGRTZKSXB"
-    secret_key = "vOw0O/TeZuzMXXTk0EFv0bsY7ZTxHZtQ1OYpirB1"
+    access_key = "" # use your user's credentials
+    secret_key = ""
 }
 
 provider "aws" {
     alias = "central"
     region = "us-west-1"
-    
-    access_key = "AKIARHTFFQDAGRTZKSXB"
-    secret_key = "vOw0O/TeZuzMXXTk0EFv0bsY7ZTxHZtQ1OYpirB1"
+    access_key = ""
+    secret_key = ""
 }
 
 module "awslambdafunction" {
