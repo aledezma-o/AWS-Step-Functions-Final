@@ -12,7 +12,12 @@ resource "aws_iam_role" "step_function_role" {
         "Version": "2012-10-17",
         "Statement": [
             {
-                "Action": "sts:AssumeRole",
+                "Action": [
+                "sts:AssumeRole",
+                "iam:AttachRolePolicy",
+                "iam:CreateRole",
+                "iam:PutRolePolicy"
+                ],
                 "Principal": {
                     "Service": "states.amazonaws.com"
                 },
